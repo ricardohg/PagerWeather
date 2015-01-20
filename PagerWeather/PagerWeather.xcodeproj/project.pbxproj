@@ -17,6 +17,10 @@
 		8C5365DB1A6DF077002644E8 /* WeatherDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5365D91A6DF077002644E8 /* WeatherDetailViewController.xib */; };
 		8CF408161A6DF6F100DB45E1 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF408151A6DF6F100DB45E1 /* City.m */; };
 		8CF4081A1A6DFDCA00DB45E1 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CF408191A6DFDCA00DB45E1 /* countries.json */; };
+		8CF4081E1A6E047300DB45E1 /* CitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF4081C1A6E047300DB45E1 /* CitiesViewController.m */; };
+		8CF4081F1A6E047300DB45E1 /* CitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CF4081D1A6E047300DB45E1 /* CitiesViewController.xib */; };
+		8CF408231A6E049700DB45E1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF408211A6E049700DB45E1 /* SettingsViewController.m */; };
+		8CF408241A6E049700DB45E1 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CF408221A6E049700DB45E1 /* SettingsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,12 @@
 		8CF408141A6DF6F100DB45E1 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = City.h; path = Models/City.h; sourceTree = "<group>"; };
 		8CF408151A6DF6F100DB45E1 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = City.m; path = Models/City.m; sourceTree = "<group>"; };
 		8CF408191A6DFDCA00DB45E1 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		8CF4081B1A6E047300DB45E1 /* CitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CitiesViewController.h; path = ViewControllers/CitiesViewController.h; sourceTree = "<group>"; };
+		8CF4081C1A6E047300DB45E1 /* CitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CitiesViewController.m; path = ViewControllers/CitiesViewController.m; sourceTree = "<group>"; };
+		8CF4081D1A6E047300DB45E1 /* CitiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CitiesViewController.xib; path = ViewControllers/CitiesViewController.xib; sourceTree = "<group>"; };
+		8CF408201A6E049700DB45E1 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		8CF408211A6E049700DB45E1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		8CF408221A6E049700DB45E1 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		E1A26CE04019BBAE9792F72E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +156,12 @@
 				8C5365D71A6DF077002644E8 /* WeatherDetailViewController.h */,
 				8C5365D81A6DF077002644E8 /* WeatherDetailViewController.m */,
 				8C5365D91A6DF077002644E8 /* WeatherDetailViewController.xib */,
+				8CF4081B1A6E047300DB45E1 /* CitiesViewController.h */,
+				8CF4081C1A6E047300DB45E1 /* CitiesViewController.m */,
+				8CF4081D1A6E047300DB45E1 /* CitiesViewController.xib */,
+				8CF408201A6E049700DB45E1 /* SettingsViewController.h */,
+				8CF408211A6E049700DB45E1 /* SettingsViewController.m */,
+				8CF408221A6E049700DB45E1 /* SettingsViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -250,9 +266,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C5365C11A6DF013002644E8 /* LaunchScreen.xib in Resources */,
+				8CF408241A6E049700DB45E1 /* SettingsViewController.xib in Resources */,
 				8C5365BE1A6DF013002644E8 /* Images.xcassets in Resources */,
 				8CF4081A1A6DFDCA00DB45E1 /* countries.json in Resources */,
 				8C5365DB1A6DF077002644E8 /* WeatherDetailViewController.xib in Resources */,
+				8CF4081F1A6E047300DB45E1 /* CitiesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,8 +321,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CF4081E1A6E047300DB45E1 /* CitiesViewController.m in Sources */,
 				8C5365B61A6DF013002644E8 /* AppDelegate.m in Sources */,
 				8C5365B31A6DF013002644E8 /* main.m in Sources */,
+				8CF408231A6E049700DB45E1 /* SettingsViewController.m in Sources */,
 				8CF408161A6DF6F100DB45E1 /* City.m in Sources */,
 				8C5365DA1A6DF077002644E8 /* WeatherDetailViewController.m in Sources */,
 			);
