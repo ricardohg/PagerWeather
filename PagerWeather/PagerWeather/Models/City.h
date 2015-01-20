@@ -14,4 +14,12 @@
 @property (nonatomic, copy) NSString *countryString;
 @property (nonatomic, strong) NSURL *imageUrl;
 
+- (id)initWithDictionary:(NSDictionary*)dictionary;
+
+/*
+ * Returns an array of City objects
+ */
+
++ (NSArray*)getCities;
+
 @end

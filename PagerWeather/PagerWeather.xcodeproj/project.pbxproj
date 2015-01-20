@@ -16,6 +16,7 @@
 		8C5365DA1A6DF077002644E8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5365D81A6DF077002644E8 /* HomeViewController.m */; };
 		8C5365DB1A6DF077002644E8 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5365D91A6DF077002644E8 /* HomeViewController.xib */; };
 		8CF408161A6DF6F100DB45E1 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF408151A6DF6F100DB45E1 /* City.m */; };
+		8CF4081A1A6DFDCA00DB45E1 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CF408191A6DFDCA00DB45E1 /* countries.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		8C5365D91A6DF077002644E8 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = ViewControllers/HomeViewController.xib; sourceTree = "<group>"; };
 		8CF408141A6DF6F100DB45E1 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = City.h; path = Models/City.h; sourceTree = "<group>"; };
 		8CF408151A6DF6F100DB45E1 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = City.m; path = Models/City.m; sourceTree = "<group>"; };
+		8CF408191A6DFDCA00DB45E1 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		E1A26CE04019BBAE9792F72E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,7 @@
 			children = (
 				8C5365B11A6DF013002644E8 /* Info.plist */,
 				8C5365B21A6DF013002644E8 /* main.m */,
+				8CF408191A6DFDCA00DB45E1 /* countries.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			files = (
 				8C5365C11A6DF013002644E8 /* LaunchScreen.xib in Resources */,
 				8C5365BE1A6DF013002644E8 /* Images.xcassets in Resources */,
+				8CF4081A1A6DFDCA00DB45E1 /* countries.json in Resources */,
 				8C5365DB1A6DF077002644E8 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
