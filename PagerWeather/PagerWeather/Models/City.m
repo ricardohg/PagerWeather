@@ -8,7 +8,7 @@
 
 #import "City.h"
 
-static NSString * const jsonPath = @"countries";
+static NSString * const JSON_PATH = @"countries";
 
 @implementation City
 
@@ -25,7 +25,7 @@ static NSString * const jsonPath = @"countries";
 
 + (NSArray *)getCities {
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:jsonPath ofType:@"json"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:JSON_PATH ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     NSDictionary *citiesDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     NSMutableArray * citiesMutableArray = [NSMutableArray array];
