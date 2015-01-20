@@ -13,8 +13,8 @@
 		8C5365BE1A6DF013002644E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C5365BD1A6DF013002644E8 /* Images.xcassets */; };
 		8C5365C11A6DF013002644E8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5365BF1A6DF013002644E8 /* LaunchScreen.xib */; };
 		8C5365CD1A6DF013002644E8 /* PagerWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5365CC1A6DF013002644E8 /* PagerWeatherTests.m */; };
-		8C5365DA1A6DF077002644E8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5365D81A6DF077002644E8 /* HomeViewController.m */; };
-		8C5365DB1A6DF077002644E8 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5365D91A6DF077002644E8 /* HomeViewController.xib */; };
+		8C5365DA1A6DF077002644E8 /* WeatherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5365D81A6DF077002644E8 /* WeatherDetailViewController.m */; };
+		8C5365DB1A6DF077002644E8 /* WeatherDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5365D91A6DF077002644E8 /* WeatherDetailViewController.xib */; };
 		8CF408161A6DF6F100DB45E1 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF408151A6DF6F100DB45E1 /* City.m */; };
 		8CF4081A1A6DFDCA00DB45E1 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CF408191A6DFDCA00DB45E1 /* countries.json */; };
 /* End PBXBuildFile section */
@@ -42,9 +42,9 @@
 		8C5365C61A6DF013002644E8 /* PagerWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagerWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C5365CB1A6DF013002644E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C5365CC1A6DF013002644E8 /* PagerWeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagerWeatherTests.m; sourceTree = "<group>"; };
-		8C5365D71A6DF077002644E8 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewControllers/HomeViewController.h; sourceTree = "<group>"; };
-		8C5365D81A6DF077002644E8 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewControllers/HomeViewController.m; sourceTree = "<group>"; };
-		8C5365D91A6DF077002644E8 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = ViewControllers/HomeViewController.xib; sourceTree = "<group>"; };
+		8C5365D71A6DF077002644E8 /* WeatherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherDetailViewController.h; path = ViewControllers/WeatherDetailViewController.h; sourceTree = "<group>"; };
+		8C5365D81A6DF077002644E8 /* WeatherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherDetailViewController.m; path = ViewControllers/WeatherDetailViewController.m; sourceTree = "<group>"; };
+		8C5365D91A6DF077002644E8 /* WeatherDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeatherDetailViewController.xib; path = ViewControllers/WeatherDetailViewController.xib; sourceTree = "<group>"; };
 		8CF408141A6DF6F100DB45E1 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = City.h; path = Models/City.h; sourceTree = "<group>"; };
 		8CF408151A6DF6F100DB45E1 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = City.m; path = Models/City.m; sourceTree = "<group>"; };
 		8CF408191A6DFDCA00DB45E1 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
@@ -143,9 +143,9 @@
 		8C5365D61A6DF053002644E8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8C5365D71A6DF077002644E8 /* HomeViewController.h */,
-				8C5365D81A6DF077002644E8 /* HomeViewController.m */,
-				8C5365D91A6DF077002644E8 /* HomeViewController.xib */,
+				8C5365D71A6DF077002644E8 /* WeatherDetailViewController.h */,
+				8C5365D81A6DF077002644E8 /* WeatherDetailViewController.m */,
+				8C5365D91A6DF077002644E8 /* WeatherDetailViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 				8C5365C11A6DF013002644E8 /* LaunchScreen.xib in Resources */,
 				8C5365BE1A6DF013002644E8 /* Images.xcassets in Resources */,
 				8CF4081A1A6DFDCA00DB45E1 /* countries.json in Resources */,
-				8C5365DB1A6DF077002644E8 /* HomeViewController.xib in Resources */,
+				8C5365DB1A6DF077002644E8 /* WeatherDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +306,7 @@
 				8C5365B61A6DF013002644E8 /* AppDelegate.m in Sources */,
 				8C5365B31A6DF013002644E8 /* main.m in Sources */,
 				8CF408161A6DF6F100DB45E1 /* City.m in Sources */,
-				8C5365DA1A6DF077002644E8 /* HomeViewController.m in Sources */,
+				8C5365DA1A6DF077002644E8 /* WeatherDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

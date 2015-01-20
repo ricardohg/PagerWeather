@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class HomeViewController;
+@class WeatherDetailViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) HomeViewController *homeViewController;
+@property (nonatomic, strong) WeatherDetailViewController *homeViewController;
 
 @end
 
