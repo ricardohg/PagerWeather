@@ -18,6 +18,10 @@
 		8CDD85731A6E21E6009AD8D2 /* CitiesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD85711A6E21E6009AD8D2 /* CitiesCollectionViewCell.m */; };
 		8CDD85741A6E21E6009AD8D2 /* CitiesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CDD85721A6E21E6009AD8D2 /* CitiesCollectionViewCell.xib */; };
 		8CF1CF9E1A6F25E500F83D90 /* NSDictionary+Defensive.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1CF9D1A6F25E500F83D90 /* NSDictionary+Defensive.m */; };
+		8CF1CFA11A6F2B3D00F83D90 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1CFA01A6F2B3D00F83D90 /* Weather.m */; };
+		8CF1CFA41A6F2CF900F83D90 /* Temperature.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1CFA31A6F2CF900F83D90 /* Temperature.m */; };
+		8CF1CFA81A6F2F5C00F83D90 /* OpenWeatherMapHTTPOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1CFA71A6F2F5C00F83D90 /* OpenWeatherMapHTTPOperationManager.m */; };
+		8CF1CFAB1A6F320000F83D90 /* Weather+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1CFAA1A6F320000F83D90 /* Weather+API.m */; };
 		8CF408161A6DF6F100DB45E1 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF408151A6DF6F100DB45E1 /* City.m */; };
 		8CF4081A1A6DFDCA00DB45E1 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CF408191A6DFDCA00DB45E1 /* countries.json */; };
 		8CF4081E1A6E047300DB45E1 /* CitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF4081C1A6E047300DB45E1 /* CitiesViewController.m */; };
@@ -58,6 +62,14 @@
 		8CDD85721A6E21E6009AD8D2 /* CitiesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CitiesCollectionViewCell.xib; path = ViewControllers/CustomCells/CitiesCollectionViewCell.xib; sourceTree = "<group>"; };
 		8CF1CF9C1A6F25E500F83D90 /* NSDictionary+Defensive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+Defensive.h"; path = "Categories/NSDictionary+Defensive.h"; sourceTree = "<group>"; };
 		8CF1CF9D1A6F25E500F83D90 /* NSDictionary+Defensive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+Defensive.m"; path = "Categories/NSDictionary+Defensive.m"; sourceTree = "<group>"; };
+		8CF1CF9F1A6F2B3D00F83D90 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Weather.h; path = Models/Weather.h; sourceTree = "<group>"; };
+		8CF1CFA01A6F2B3D00F83D90 /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Weather.m; path = Models/Weather.m; sourceTree = "<group>"; };
+		8CF1CFA21A6F2CF900F83D90 /* Temperature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Temperature.h; path = Models/Temperature.h; sourceTree = "<group>"; };
+		8CF1CFA31A6F2CF900F83D90 /* Temperature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Temperature.m; path = Models/Temperature.m; sourceTree = "<group>"; };
+		8CF1CFA61A6F2F5C00F83D90 /* OpenWeatherMapHTTPOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenWeatherMapHTTPOperationManager.h; path = Models/OpenWeatherMapHTTPOperationManager.h; sourceTree = "<group>"; };
+		8CF1CFA71A6F2F5C00F83D90 /* OpenWeatherMapHTTPOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenWeatherMapHTTPOperationManager.m; path = Models/OpenWeatherMapHTTPOperationManager.m; sourceTree = "<group>"; };
+		8CF1CFA91A6F320000F83D90 /* Weather+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Weather+API.h"; path = "Models/Weather+API.h"; sourceTree = "<group>"; };
+		8CF1CFAA1A6F320000F83D90 /* Weather+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Weather+API.m"; path = "Models/Weather+API.m"; sourceTree = "<group>"; };
 		8CF408141A6DF6F100DB45E1 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = City.h; path = Models/City.h; sourceTree = "<group>"; };
 		8CF408151A6DF6F100DB45E1 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = City.m; path = Models/City.m; sourceTree = "<group>"; };
 		8CF408191A6DFDCA00DB45E1 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
@@ -198,13 +210,29 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		8CF1CFA51A6F2F2B00F83D90 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				8CF1CFA61A6F2F5C00F83D90 /* OpenWeatherMapHTTPOperationManager.h */,
+				8CF1CFA71A6F2F5C00F83D90 /* OpenWeatherMapHTTPOperationManager.m */,
+				8CF1CFA91A6F320000F83D90 /* Weather+API.h */,
+				8CF1CFAA1A6F320000F83D90 /* Weather+API.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		8CF408131A6DF6B200DB45E1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8CF1CFA51A6F2F2B00F83D90 /* API */,
 				8CF408141A6DF6F100DB45E1 /* City.h */,
 				8CF408151A6DF6F100DB45E1 /* City.m */,
 				8CF408251A6E133B00DB45E1 /* User.h */,
 				8CF408261A6E133B00DB45E1 /* User.m */,
+				8CF1CF9F1A6F2B3D00F83D90 /* Weather.h */,
+				8CF1CFA01A6F2B3D00F83D90 /* Weather.m */,
+				8CF1CFA21A6F2CF900F83D90 /* Temperature.h */,
+				8CF1CFA31A6F2CF900F83D90 /* Temperature.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -356,10 +384,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CF1CFA81A6F2F5C00F83D90 /* OpenWeatherMapHTTPOperationManager.m in Sources */,
 				8CF4081E1A6E047300DB45E1 /* CitiesViewController.m in Sources */,
+				8CF1CFA41A6F2CF900F83D90 /* Temperature.m in Sources */,
+				8CF1CFAB1A6F320000F83D90 /* Weather+API.m in Sources */,
 				8CF408271A6E133B00DB45E1 /* User.m in Sources */,
 				8C5365B61A6DF013002644E8 /* AppDelegate.m in Sources */,
 				8C5365B31A6DF013002644E8 /* main.m in Sources */,
+				8CF1CFA11A6F2B3D00F83D90 /* Weather.m in Sources */,
 				8CF1CF9E1A6F25E500F83D90 /* NSDictionary+Defensive.m in Sources */,
 				8CF408231A6E049700DB45E1 /* SettingsViewController.m in Sources */,
 				8CDD85731A6E21E6009AD8D2 /* CitiesCollectionViewCell.m in Sources */,
