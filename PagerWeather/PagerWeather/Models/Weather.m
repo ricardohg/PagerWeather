@@ -17,7 +17,7 @@
     if (self) {
         self.cityID = [dictionary numberValueForKeyPath:@"id"];
         self.cityNameString = [dictionary valueForKeyPath:@"name" defaultValue:nil];
-        
+        self.dataTimeEpochNumber = [dictionary numberValueForKeyPath:@"dt"];
         NSDictionary *sys = [dictionary dictionaryValueForKeyPath:@"sys" defaultValue:nil];
         self.countryCodeString = [sys valueForKeyPath:@"country" defaultValue:nil];
         self.sunriseEpochNumber = [sys numberValueForKeyPath:@"sunrise"];

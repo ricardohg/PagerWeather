@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSNumber *cityID;
 @property (nonatomic, copy) NSString *cityNameString;
 @property (nonatomic, copy) NSString *countryCodeString;
+@property (nonatomic, strong) NSNumber *dataTimeEpochNumber;
 @property (nonatomic, strong) NSNumber *sunriseEpochNumber;
 @property (nonatomic, strong) NSNumber *sunsetEpochNUmber;
 @property (nonatomic, copy) NSString *weatherMainString;

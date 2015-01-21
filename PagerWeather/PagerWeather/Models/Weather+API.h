@@ -14,4 +14,9 @@
                    orLatitude:(NSNumber*)latitude longitude:(NSNumber*)longitude
           withCompletionBlock:(void (^)(Weather *weather,NSError *error))completionBlock;
 
+
++ (void)getForecastForCityName:(NSString*)cityNameString
+                    orLatitude:(NSNumber*)latitude longitude:(NSNumber*)longitude
+               AndNumberOfDays:(NSNumber*)days
+          withCompletionBlock:(void (^)(NSArray *weatherArray,NSError *error))completionBlock;
 @end

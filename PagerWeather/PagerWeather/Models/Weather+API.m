@@ -8,13 +8,15 @@
 
 #import "Weather+API.h"
 #import "OpenWeatherMapHTTPOperationManager.h"
+#import "NSDictionary+Defensive.h"
 
 static NSString * const WEATHER_ENDPOINT = @"weather";
+static NSString * const FORECAST_ENDPOINT = @"forecast";
 static NSString * const APPID = @"c3be8a47d90ecd724d6f15cb400b2c49";
 
 @implementation Weather (API)
 
-+(void)getWeatherForCityName:(NSString *)cityNameString orLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude withCompletionBlock:(void (^)(Weather *, NSError *))completionBlock {
++ (void)getWeatherForCityName:(NSString *)cityNameString orLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude withCompletionBlock:(void (^)(Weather *weather, NSError *error))completionBlock {
     OpenWeatherMapHTTPOperationManager * openWeatherMapHTTPOperationManager = [OpenWeatherMapHTTPOperationManager sharedManager];
     NSDictionary * params = nil;
     if (cityNameString) {
@@ -36,6 +38,42 @@ static NSString * const APPID = @"c3be8a47d90ecd724d6f15cb400b2c49";
             
         }
         
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (completionBlock) {
+            completionBlock(nil,error);
+        }
+    }];
+    
+}
+
++ (void)getForecastForCityName:(NSString *)cityNameString orLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude AndNumberOfDays:(NSNumber *)days withCompletionBlock:(void (^)(NSArray *weatherArray, NSError *error))completionBlock {
+    OpenWeatherMapHTTPOperationManager * openWeatherMapHTTPOperationManager = [OpenWeatherMapHTTPOperationManager sharedManager];
+    //if not passing number of days, default this parameter to 5
+    NSNumber * numberOfDays = days ? days : @(5);
+    NSDictionary * params = nil;
+    if (cityNameString) {
+        params = @{@"q":cityNameString,@"APPID":APPID,@"cnt":numberOfDays};
+    } else if (latitude && longitude) {
+        params = @{@"lat":latitude,@"lon":longitude,@"APPID":APPID,@"cnt":numberOfDays};
+    } else {
+        NSLog(@"you should pass a city name or latitude and longitude");
+    }
+    
+    [openWeatherMapHTTPOperationManager GET:FORECAST_ENDPOINT parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (completionBlock) {
+            NSMutableArray *weatherArray = [NSMutableArray array];
+            NSArray *forecastArray = [responseObject arrayValueForKeyPath:@"list" defaultValue:nil];
+            if (forecastArray) {
+                for (NSDictionary *weatherDictionary in forecastArray) {
+                    Weather *weather = [[Weather alloc] initWithDictionary:weatherDictionary];
+                    [weatherArray addObject:weather];
+                }
+                completionBlock([weatherArray copy],nil);
+            } else {
+                completionBlock(nil,nil);
+            }
+            
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (completionBlock) {
             completionBlock(nil,error);
