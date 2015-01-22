@@ -14,7 +14,7 @@
 #import "City.h"
 #import "AnimationController.h"
 
-@interface WeatherDetailViewController () <CLLocationManagerDelegate,CitiesViewControllerDelegate,UINavigationControllerDelegate>
+@interface WeatherDetailViewController () <CLLocationManagerDelegate,CitiesViewControllerDelegate,UINavigationControllerDelegate,UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) Weather *currentWeather;
@@ -98,6 +98,8 @@
 {
     SettingsViewController * settingsViewController = [[SettingsViewController alloc] init];
     UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    settingsNavigationController.modalPresentationStyle = UIModalPresentationCustom;
+    settingsNavigationController.transitioningDelegate = self;
     [self.navigationController presentViewController:settingsNavigationController animated:YES completion:nil];
     
 }
@@ -131,7 +133,7 @@
 
 #pragma mark - CitiesViewControllerDelegate
 
--(void)didSelectCity:(City *)city
+- (void)didSelectCity:(City *)city
 {
     self.currentCity = city;
 }
@@ -140,10 +142,24 @@
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
 {
-    AnimationController *animationController = [[AnimationController alloc] initWithDuration:0.5 options:(operation == UINavigationControllerOperationPush
-                                                                                                         ? UIViewAnimationOptionTransitionFlipFromRight
-                                                                                                          : UIViewAnimationOptionTransitionFlipFromLeft)];
+
+    AnimationController *animationController = [[AnimationController alloc] initWithAnimationType:AnimationControllerAnimationTypeSimple];
+    animationController.options = (  operation == UINavigationControllerOperationPush
+                                   ? UIViewAnimationOptionTransitionFlipFromRight
+                                   : UIViewAnimationOptionTransitionFlipFromLeft);
+    
     return animationController;
 
 }
+
+#pragma mark - UIViewControllerTransitioningDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    return [[AnimationController alloc] initWithAnimationType:AnimationControllerAnimationTypePresent];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return [[AnimationController alloc] initWithAnimationType:AnimationControllerAnimationTypeDismiss];
+}
+
 @end

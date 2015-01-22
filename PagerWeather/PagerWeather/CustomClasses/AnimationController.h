@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, AnimationControllerAnimationType) {
+    AnimationControllerAnimationTypeSimple,
+    AnimationControllerAnimationTypePresent,
+    AnimationControllerAnimationTypeDismiss
+};
+
 @interface AnimationController : NSObject <UIViewControllerAnimatedTransitioning>
 
-- (id)initWithDuration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options;
-
-@property (nonatomic,assign) NSTimeInterval duration;
-@property (nonatomic,assign) UIViewAnimationOptions options;
+- (id)initWithAnimationType:(AnimationControllerAnimationType)animationType;
+@property (nonatomic, assign) UIViewAnimationOptions options;
 
 @end

@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.weatherDetailViewController = [[WeatherDetailViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    self.weatherDetailViewController = [[WeatherDetailViewController alloc] initWithNibName:@"WeatherDetailViewController" bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.weatherDetailViewController];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
