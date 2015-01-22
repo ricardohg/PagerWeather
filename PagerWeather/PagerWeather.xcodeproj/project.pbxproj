@@ -15,6 +15,7 @@
 		8C5365CD1A6DF013002644E8 /* PagerWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5365CC1A6DF013002644E8 /* PagerWeatherTests.m */; };
 		8C5365DA1A6DF077002644E8 /* WeatherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5365D81A6DF077002644E8 /* WeatherDetailViewController.m */; };
 		8C5365DB1A6DF077002644E8 /* WeatherDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5365D91A6DF077002644E8 /* WeatherDetailViewController.xib */; };
+		8C843EF41A709814000828D7 /* AnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C843EF31A709814000828D7 /* AnimationController.m */; };
 		8CDD85731A6E21E6009AD8D2 /* CitiesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD85711A6E21E6009AD8D2 /* CitiesCollectionViewCell.m */; };
 		8CDD85741A6E21E6009AD8D2 /* CitiesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CDD85721A6E21E6009AD8D2 /* CitiesCollectionViewCell.xib */; };
 		8CF1CF9E1A6F25E500F83D90 /* NSDictionary+Defensive.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1CF9D1A6F25E500F83D90 /* NSDictionary+Defensive.m */; };
@@ -57,6 +58,8 @@
 		8C5365D71A6DF077002644E8 /* WeatherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherDetailViewController.h; path = ViewControllers/WeatherDetailViewController.h; sourceTree = "<group>"; };
 		8C5365D81A6DF077002644E8 /* WeatherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherDetailViewController.m; path = ViewControllers/WeatherDetailViewController.m; sourceTree = "<group>"; };
 		8C5365D91A6DF077002644E8 /* WeatherDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeatherDetailViewController.xib; path = ViewControllers/WeatherDetailViewController.xib; sourceTree = "<group>"; };
+		8C843EF21A709814000828D7 /* AnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationController.h; path = CustomClasses/AnimationController.h; sourceTree = "<group>"; };
+		8C843EF31A709814000828D7 /* AnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationController.m; path = CustomClasses/AnimationController.m; sourceTree = "<group>"; };
 		8CDD85701A6E21E6009AD8D2 /* CitiesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CitiesCollectionViewCell.h; path = ViewControllers/CustomCells/CitiesCollectionViewCell.h; sourceTree = "<group>"; };
 		8CDD85711A6E21E6009AD8D2 /* CitiesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CitiesCollectionViewCell.m; path = ViewControllers/CustomCells/CitiesCollectionViewCell.m; sourceTree = "<group>"; };
 		8CDD85721A6E21E6009AD8D2 /* CitiesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CitiesCollectionViewCell.xib; path = ViewControllers/CustomCells/CitiesCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 		8C5365AF1A6DF013002644E8 /* PagerWeather */ = {
 			isa = PBXGroup;
 			children = (
+				8C843EF11A7097E4000828D7 /* CustomClasses */,
 				8CF1CF9B1A6F259500F83D90 /* Categories */,
 				8CF408131A6DF6B200DB45E1 /* Models */,
 				8C5365D61A6DF053002644E8 /* ViewControllers */,
@@ -189,6 +193,15 @@
 				8CF408221A6E049700DB45E1 /* SettingsViewController.xib */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8C843EF11A7097E4000828D7 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				8C843EF21A709814000828D7 /* AnimationController.h */,
+				8C843EF31A709814000828D7 /* AnimationController.m */,
+			);
+			name = CustomClasses;
 			sourceTree = "<group>";
 		};
 		8CDD856F1A6E21AA009AD8D2 /* CustomCells */ = {
@@ -394,6 +407,7 @@
 				8CF1CFA11A6F2B3D00F83D90 /* Weather.m in Sources */,
 				8CF1CF9E1A6F25E500F83D90 /* NSDictionary+Defensive.m in Sources */,
 				8CF408231A6E049700DB45E1 /* SettingsViewController.m in Sources */,
+				8C843EF41A709814000828D7 /* AnimationController.m in Sources */,
 				8CDD85731A6E21E6009AD8D2 /* CitiesCollectionViewCell.m in Sources */,
 				8CF408161A6DF6F100DB45E1 /* City.m in Sources */,
 				8C5365DA1A6DF077002644E8 /* WeatherDetailViewController.m in Sources */,

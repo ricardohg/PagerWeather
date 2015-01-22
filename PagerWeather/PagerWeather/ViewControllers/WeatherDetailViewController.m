@@ -12,8 +12,9 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Weather+API.h"
 #import "City.h"
+#import "AnimationController.h"
 
-@interface WeatherDetailViewController () <CLLocationManagerDelegate,CitiesViewControllerDelegate>
+@interface WeatherDetailViewController () <CLLocationManagerDelegate,CitiesViewControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) Weather *currentWeather;
@@ -25,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.delegate = self;
     [self setUpNavigationBarButtonItems];
     [self startLocationManager];
 }
@@ -134,4 +136,14 @@
     self.currentCity = city;
 }
 
+#pragma mark - UINavigationControllerDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
+{
+    AnimationController *animationController = [[AnimationController alloc] initWithDuration:0.5 options:(operation == UINavigationControllerOperationPush
+                                                                                                         ? UIViewAnimationOptionTransitionFlipFromRight
+                                                                                                          : UIViewAnimationOptionTransitionFlipFromLeft)];
+    return animationController;
+
+}
 @end
