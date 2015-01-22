@@ -79,11 +79,11 @@ typedef NS_ENUM(NSInteger, SettingsTableViewTemperatureRow) {
             switch (indexPath.row) {
                 case SettingsTableViewTemperatureRowFahrenheit: {
                     
-                    static NSString *CellIdentifier = @"Cell";
+                    static NSString *cellIdentifier = @"Cell";
                     
-                    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
                     if (cell == nil) {
-                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
                         //add a switch
                         UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
                         switchview.tag = indexPath.row;
