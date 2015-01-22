@@ -39,6 +39,7 @@ typedef NS_ENUM(NSInteger, SettingsTableViewTemperatureRow) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = NSLocalizedString(@"Settings", nil);
     self.settingsTableView.dataSource = self;
     self.settingsTableView.delegate = self;
     //hack to remove extra tableview lines

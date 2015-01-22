@@ -9,9 +9,16 @@
 #import "WeatherDetailViewController.h"
 #import "CitiesViewController.h"
 #import "SettingsViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import "Weather+API.h"
+#import "City.h"
 
-@interface WeatherDetailViewController ()
-
+@interface WeatherDetailViewController () <CLLocationManagerDelegate,CitiesViewControllerDelegate>
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *currentLocation;
+@property (nonatomic, strong) Weather *currentWeather;
+@property (nonatomic, strong) NSArray *weatherArray;
+@property (nonatomic, strong) City *currentCity;
 @end
 
 @implementation WeatherDetailViewController
@@ -19,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavigationBarButtonItems];
+    [self startLocationManager];
 }
 
 #pragma mark - instance methods
@@ -33,9 +41,54 @@
     
 }
 
+- (void)startLocationManager
+{
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 &&
+        [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse
+        ) {
+        [self.locationManager requestWhenInUseAuthorization];
+    } else {
+        [self.locationManager startUpdatingLocation];
+    }
+}
+
+- (void)loadWeatherData
+{
+    NSString *cityString = @"New York";
+    if (self.currentLocation) {
+        cityString = nil;
+    }
+    
+    NSNumber *latitude = @(self.currentLocation.coordinate.latitude);
+    NSNumber *longitude = @(self.currentLocation.coordinate.longitude);
+    
+    [Weather getWeatherForCityName:cityString orLatitude:latitude longitude:longitude withCompletionBlock:^(Weather *weather, NSError *error) {
+        
+        if (!error) {
+            self.currentWeather = weather;
+        }
+        
+    }];
+    
+    [Weather getForecastForCityName:cityString orLatitude:latitude longitude:longitude AndNumberOfDays:@(2) withCompletionBlock:^(NSArray *weatherArray, NSError *error) {
+        
+        if (!error) {
+            self.weatherArray = weatherArray;
+        }
+        
+    }];
+    
+   
+}
+
 - (void)goToCities:(id)sel
 {
     CitiesViewController *citiesViewController = [[CitiesViewController alloc] init];
+    citiesViewController.delegate = self;
     [self.navigationController pushViewController:citiesViewController animated:YES];
 }
 
@@ -45,6 +98,40 @@
     UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
     [self.navigationController presentViewController:settingsNavigationController animated:YES completion:nil];
     
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    self.currentLocation = locations[0];
+    [self.locationManager stopUpdatingLocation];
+    [self loadWeatherData];
+    
+}
+
+- (void)locationManager:(CLLocationManager*)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    switch (status) {
+        case kCLAuthorizationStatusNotDetermined: {
+            NSLog(@"User still thinking");
+        } break;
+        case kCLAuthorizationStatusDenied: {
+            NSLog(@"Not autorized");
+        } break;
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+        case kCLAuthorizationStatusAuthorizedAlways: {
+            [self.locationManager startUpdatingLocation];
+        } break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - CitiesViewControllerDelegate
+
+-(void)didSelectCity:(City *)city
+{
+    self.currentCity = city;
 }
 
 @end

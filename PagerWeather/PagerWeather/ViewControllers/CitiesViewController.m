@@ -10,7 +10,7 @@
 #import "CitiesCollectionViewCell.h"
 #import "City.h"
 
-static NSString * const CELL_REUSE_ID = @"CitiesCollectionViewCell";
+static NSString * const CELL_ID = @"CitiesCollectionViewCell";
 
 @interface CitiesViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
@@ -22,10 +22,11 @@ static NSString * const CELL_REUSE_ID = @"CitiesCollectionViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = NSLocalizedString(@"Cities", nil);
     self.citiesCollectionView.dataSource = self;
     self.citiesCollectionView.delegate = self;
     self.citiesArray = [City getCities];
-    [self.citiesCollectionView registerNib:[UINib nibWithNibName:CELL_REUSE_ID bundle:nil] forCellWithReuseIdentifier:CELL_REUSE_ID];
+    [self.citiesCollectionView registerNib:[UINib nibWithNibName:CELL_ID bundle:nil] forCellWithReuseIdentifier:CELL_ID];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -36,11 +37,26 @@ static NSString * const CELL_REUSE_ID = @"CitiesCollectionViewCell";
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CitiesCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CELL_REUSE_ID forIndexPath:indexPath];
+    CitiesCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CELL_ID forIndexPath:indexPath];
     City *city = self.citiesArray[indexPath.row];
     [cell setCellDataWithCity:city];
     
     return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(CGRectGetWidth(collectionView.frame), CGRectGetWidth(collectionView.frame));
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    City * city = self.citiesArray[indexPath.row];
+    if ([self.delegate respondsToSelector:@selector(didSelectCity:)]) {
+        [self.delegate didSelectCity:city];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class City;
+@protocol CitiesViewControllerDelegate <NSObject>
+
+- (void)didSelectCity:(City*)city;
+
+@end
 
 @interface CitiesViewController : UIViewController
-
+@property (nonatomic, weak) id<CitiesViewControllerDelegate>delegate;
 @end

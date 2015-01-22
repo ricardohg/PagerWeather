@@ -10,10 +10,16 @@
 
 @interface Weather (API)
 
+/*
+ * Get the current weather
+ */
+
 + (void)getWeatherForCityName:(NSString*)cityNameString
                    orLatitude:(NSNumber*)latitude longitude:(NSNumber*)longitude
           withCompletionBlock:(void (^)(Weather *weather,NSError *error))completionBlock;
-
+/*
+ * Get an array of weather objects for the forecast
+ */
 
 + (void)getForecastForCityName:(NSString*)cityNameString
                     orLatitude:(NSNumber*)latitude longitude:(NSNumber*)longitude
