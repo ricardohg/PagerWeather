@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WeatherDetailViewController.h"
+#import "UIColor+Weather.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +23,16 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.weatherDetailViewController];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
+    [self setUpNavigationBar];
     return YES;
+}
+
+- (void)setUpNavigationBar
+{
+    [[UINavigationBar appearance] setBarTintColor:[UIColor navigationBarBarTintColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor navigationBarTintColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           [UIColor navigationBarTextColor], NSForegroundColorAttributeName,nil]];
 }
 
 @end
