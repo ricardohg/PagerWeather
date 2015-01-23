@@ -26,7 +26,7 @@
 
 -(void)setCellDataWithCity:(City *)city
 {
-    [self.cityImageView setImageWithURL:city.imageUrl placeholderImage:nil];
+    [self.cityImageView setImageWithURL:city.imageUrl placeholderImage:[UIImage imageNamed:@"placeholder"]];
     self.countryLabel.text = city.countryString;
     self.cityLabel.text = city.cityString;
 }

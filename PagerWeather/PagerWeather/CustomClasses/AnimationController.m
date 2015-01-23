@@ -108,7 +108,7 @@
         
     }];
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         toViewController.view.alpha = 1.0;
         toViewController.view.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
@@ -137,7 +137,7 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         fromViewController.view.alpha = 0.7;
-        fromViewController.view.transform = CGAffineTransformMakeScale(0.9, 0.9);
+        fromViewController.view.transform = CGAffineTransformMakeScale(0.95, 0.95);
     }];
     
     CGPoint centerOffScreen = containerView.center;
@@ -145,7 +145,7 @@
     centerOffScreen.y = containerView.frame.size.height;
     toViewController.view.center = centerOffScreen;
     
-    [UIView animateWithDuration:1.0 delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:2.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.5 delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:1.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         toViewController.view.center = containerView.center;
         
