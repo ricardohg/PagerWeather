@@ -26,6 +26,7 @@ static NSString * const CELL_ID = @"CitiesCollectionViewCell";
     self.citiesCollectionView.dataSource = self;
     self.citiesCollectionView.delegate = self;
     self.citiesArray = [City getCities];
+    self.navigationController.navigationBar.topItem.title = @"";
     [self.citiesCollectionView registerNib:[UINib nibWithNibName:CELL_ID bundle:nil] forCellWithReuseIdentifier:CELL_ID];
 }
 

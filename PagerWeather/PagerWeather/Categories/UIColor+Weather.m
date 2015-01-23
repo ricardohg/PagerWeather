@@ -12,7 +12,7 @@
 
 + (UIColor *)navigationBarBarTintColor
 {
-    return [UIColor blueColor];
+    return [UIColor redColor];
 }
 
 + (UIColor *)navigationBarTintColor

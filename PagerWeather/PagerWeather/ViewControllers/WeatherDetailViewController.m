@@ -18,7 +18,7 @@
 #import "Temperature.h"
 
 static NSString * const FORECASTCELL_ID = @"ForecastTableViewCell";
-static NSString * const HOUR_DATE_FORMATTER_STRING = @"HH:mm:ss";
+static NSString * const HOUR_DATE_FORMATTER_STRING = @"HH:mm";
 static NSString * const DAY_DATE_FORMATTER_STRING = @"EEEE";
 static NSDateFormatter *hourDateFormatter;
 static NSDateFormatter *dayDateFormatter;
@@ -70,7 +70,7 @@ static NSNumberFormatter *numberFormatter;
 - (void)setUpNavigationBarButtonItems
 {
     UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cities", nil) style:UIBarButtonItemStylePlain target:self action:@selector(goToCities:)];
-    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings", nil) style:UIBarButtonItemStylePlain target:self action:@selector(goToSettings:)];
+    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"\u2699" style:UIBarButtonItemStylePlain target:self action:@selector(goToSettings:)];
     
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     self.navigationItem.leftBarButtonItem = leftButtonItem;
@@ -111,6 +111,7 @@ static NSNumberFormatter *numberFormatter;
         if (!error) {
             if (weatherArray) {
                 self.weatherArray = weatherArray;
+                self.currentWeather = weatherArray[0];
                 [self.weatherTableView reloadData];
             } else {
                 NSLog(@"no weather!");
