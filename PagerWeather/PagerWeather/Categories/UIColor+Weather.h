@@ -13,5 +13,6 @@
 + (UIColor*)navigationBarBarTintColor;
 + (UIColor*)navigationBarTintColor;
 + (UIColor*)navigationBarTextColor;
++ (UIColor*)cellLabelTextColor;
 
 @end

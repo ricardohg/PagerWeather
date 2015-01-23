@@ -24,4 +24,10 @@
 {
     return [UIColor whiteColor];
 }
+
++ (UIColor *)cellLabelTextColor
+{
+    return [UIColor blackColor];
+}
+
 @end

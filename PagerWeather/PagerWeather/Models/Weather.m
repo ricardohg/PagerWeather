@@ -17,11 +17,11 @@
     if (self) {
         self.cityID = [dictionary numberValueForKeyPath:@"id"];
         self.cityNameString = [dictionary valueForKeyPath:@"name" defaultValue:nil];
-        self.dataTimeEpochNumber = [dictionary numberValueForKeyPath:@"dt"];
+        self.timeDate = [NSDate dateWithTimeIntervalSince1970:[[dictionary numberValueForKeyPath:@"dt"] doubleValue]];
         NSDictionary *sys = [dictionary dictionaryValueForKeyPath:@"sys" defaultValue:nil];
         self.countryCodeString = [sys valueForKeyPath:@"country" defaultValue:nil];
-        self.sunriseEpochNumber = [sys numberValueForKeyPath:@"sunrise"];
-        self.sunsetEpochNUmber = [sys numberValueForKeyPath:@"sunset"];
+        self.sunriseTimeDate = [NSDate dateWithTimeIntervalSince1970:[[sys numberValueForKeyPath:@"sunrise"] doubleValue]];
+        self.sunsetTimeDate = [NSDate dateWithTimeIntervalSince1970:[[sys numberValueForKeyPath:@"sunset"] doubleValue]];
         
         NSDictionary *weather = [dictionary dictionaryValueForKeyPath:@"weather" defaultValue:nil];
         self.weatherMainString = [weather valueForKeyPath:@"main" defaultValue:nil];

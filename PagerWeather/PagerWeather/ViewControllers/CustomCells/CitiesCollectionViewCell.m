@@ -8,6 +8,7 @@
 
 #import "CitiesCollectionViewCell.h"
 #import "City.h"
+#import "UIColor+Weather.h"
 #import <UIImageView+AFNetworking.h>
 
 @interface CitiesCollectionViewCell ()
@@ -21,8 +22,8 @@
 @implementation CitiesCollectionViewCell
 
 - (void)awakeFromNib {
-    self.countryLabel.textColor = [UIColor blackColor];
-    self.cityLabel.textColor = [UIColor blackColor];
+    self.countryLabel.textColor = [UIColor cellLabelTextColor];
+    self.cityLabel.textColor = [UIColor cellLabelTextColor];
 }
 
 -(void)setCellDataWithCity:(City *)city

@@ -16,13 +16,21 @@ static NSString * const APPID = @"c3be8a47d90ecd724d6f15cb400b2c49";
 
 @implementation Weather (API)
 
-+ (void)getWeatherForCityName:(NSString *)cityNameString orLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude withCompletionBlock:(void (^)(Weather *weather, NSError *error))completionBlock {
++ (void)getWeatherForCityName:(NSString *)cityNameString orLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude withWeatherUnitsFormat:(WeatherUnitsFormat)format withCompletionBlock:(void (^)(Weather *weather, NSError *error))completionBlock {
     OpenWeatherMapHTTPOperationManager * openWeatherMapHTTPOperationManager = [OpenWeatherMapHTTPOperationManager sharedManager];
     NSDictionary * params = nil;
+    NSString *formatString = nil;
+    
+    if (format == WeatherUnitsFormatImperial) {
+        formatString = @"imperial";
+    } else {
+        //default
+        formatString = @"metric";
+    }
     if (cityNameString) {
-        params = @{@"q":cityNameString,@"APPID":APPID};
+        params = @{@"q":cityNameString,@"units":formatString,@"APPID":APPID};
     } else if (latitude && longitude) {
-        params = @{@"lat":latitude,@"lon":longitude,@"APPID":APPID};
+        params = @{@"lat":latitude,@"lon":longitude,@"units":formatString,@"APPID":APPID};
     } else {
         NSLog(@"you should pass a city name or latitude and longitude");
     }
@@ -46,15 +54,23 @@ static NSString * const APPID = @"c3be8a47d90ecd724d6f15cb400b2c49";
     
 }
 
-+ (void)getForecastForCityName:(NSString *)cityNameString orLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude AndNumberOfDays:(NSNumber *)days withCompletionBlock:(void (^)(NSArray *weatherArray, NSError *error))completionBlock {
++ (void)getForecastForCityName:(NSString *)cityNameString orLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude AndNumberOfDays:(NSNumber *)days withWeatherUnitsFormat:(WeatherUnitsFormat)format withCompletionBlock:(void (^)(NSArray *weatherArray, NSError *error))completionBlock {
     OpenWeatherMapHTTPOperationManager * openWeatherMapHTTPOperationManager = [OpenWeatherMapHTTPOperationManager sharedManager];
     //if not passing number of days, default this parameter to 5
     NSNumber * numberOfDays = days ? days : @(5);
     NSDictionary * params = nil;
+    NSString *formatString = nil;
+    
+    if (format == WeatherUnitsFormatImperial) {
+        formatString = @"imperial";
+    } else {
+        //default
+        formatString = @"metric";
+    }
     if (cityNameString) {
-        params = @{@"q":cityNameString,@"APPID":APPID,@"cnt":numberOfDays};
+        params = @{@"q":cityNameString,@"units":formatString,@"APPID":APPID,@"cnt":numberOfDays};
     } else if (latitude && longitude) {
-        params = @{@"lat":latitude,@"lon":longitude,@"APPID":APPID,@"cnt":numberOfDays};
+        params = @{@"lat":latitude,@"lon":longitude,@"units":formatString,@"APPID":APPID,@"cnt":numberOfDays};
     } else {
         NSLog(@"you should pass a city name or latitude and longitude");
     }

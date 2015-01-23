@@ -13,24 +13,59 @@
 #import "Weather+API.h"
 #import "City.h"
 #import "AnimationController.h"
+#import "ForecastTableViewCell.h"
+#import "User.h"
+#import "Temperature.h"
 
-@interface WeatherDetailViewController () <CLLocationManagerDelegate,CitiesViewControllerDelegate,UIViewControllerTransitioningDelegate>
+static NSString * const FORECASTCELL_ID = @"ForecastTableViewCell";
+static NSString * const HOUR_DATE_FORMATTER_STRING = @"HH:mm:ss";
+static NSString * const DAY_DATE_FORMATTER_STRING = @"EEEE";
+static NSDateFormatter *hourDateFormatter;
+static NSDateFormatter *dayDateFormatter;
+static NSNumberFormatter *numberFormatter;
+
+@interface WeatherDetailViewController () <CLLocationManagerDelegate,CitiesViewControllerDelegate,UIViewControllerTransitioningDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) Weather *currentWeather;
 @property (nonatomic, strong) NSArray *weatherArray;
 @property (nonatomic, strong) City *currentCity;
+@property (nonatomic, strong) User *currentUser;
+@property (weak, nonatomic) IBOutlet UITableView *weatherTableView;
 @end
 
 @implementation WeatherDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.currentUser = [User sharedUser];
+    self.weatherTableView.delegate = self;
+    self.weatherTableView.dataSource = self;
+    [self.weatherTableView registerNib:[UINib nibWithNibName:FORECASTCELL_ID bundle:nil] forCellReuseIdentifier:FORECASTCELL_ID];
+    [self setUpFormatters];
     [self setUpNavigationBarButtonItems];
     [self startLocationManager];
 }
 
 #pragma mark - instance methods
+
+- (void)setUpFormatters
+{
+    NSLocale *currentLocale = [NSLocale currentLocale];
+    hourDateFormatter = [[NSDateFormatter alloc] init];
+    [hourDateFormatter setLocale:currentLocale];
+    [hourDateFormatter setDateFormat:HOUR_DATE_FORMATTER_STRING];
+    
+    dayDateFormatter = [[NSDateFormatter alloc] init];
+    [dayDateFormatter setLocale:currentLocale];
+    [dayDateFormatter setDateFormat:DAY_DATE_FORMATTER_STRING];
+    numberFormatter = [[NSNumberFormatter alloc] init];
+    
+    [numberFormatter setRoundingMode:NSNumberFormatterRoundHalfUp];
+    [numberFormatter setMaximumFractionDigits:0];
+
+    
+}
 
 - (void)setUpNavigationBarButtonItems
 {
@@ -67,22 +102,14 @@
     NSNumber *latitude = @(self.currentLocation.coordinate.latitude);
     NSNumber *longitude = @(self.currentLocation.coordinate.longitude);
     
-    [Weather getWeatherForCityName:cityString orLatitude:latitude longitude:longitude withCompletionBlock:^(Weather *weather, NSError *error) {
-        
-        if (!error) {
-            self.currentWeather = weather;
-        }
-        
-    }];
+    WeatherUnitsFormat format = self.currentUser.isFahrenheitSelected ? WeatherUnitsFormatImperial : WeatherUnitsFormatMetric;
     
-    [Weather getForecastForCityName:cityString orLatitude:latitude longitude:longitude AndNumberOfDays:@(2) withCompletionBlock:^(NSArray *weatherArray, NSError *error) {
-        
+    [Weather getForecastForCityName:cityString orLatitude:latitude longitude:longitude AndNumberOfDays:@(5) withWeatherUnitsFormat:format withCompletionBlock:^(NSArray *weatherArray, NSError *error) {
         if (!error) {
             self.weatherArray = weatherArray;
+            [self.weatherTableView reloadData];
         }
-        
     }];
-    
    
 }
 
@@ -95,7 +122,7 @@
 
 - (void)goToSettings:(id)sel
 {
-    SettingsViewController * settingsViewController = [[SettingsViewController alloc] init];
+    SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
     UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
     settingsNavigationController.modalPresentationStyle = UIModalPresentationCustom;
     settingsNavigationController.transitioningDelegate = self;
@@ -103,13 +130,47 @@
     
 }
 
+- (NSString*)getTemperatureSuffixString
+{
+    return self.currentUser.isFahrenheitSelected ? @"F" : @"º";
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.weatherArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ForecastTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FORECASTCELL_ID forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    Weather *weather = self.weatherArray[indexPath.row];
+    NSString * suffixString = [self getTemperatureSuffixString];
+    cell.temperatureLabel.text = [NSString stringWithFormat:@"%@ %@",[numberFormatter stringFromNumber:weather.temperature.mainTemparetureNumber],suffixString];
+    cell.timeLabel.text = [hourDateFormatter stringFromDate:weather.timeDate];
+    cell.dateLabel.text = [dayDateFormatter stringFromDate:weather.timeDate];
+    
+    return cell;
+    
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [ForecastTableViewCell heightForCell];
+}
+
 #pragma mark - CLLocationManagerDelegate
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    self.currentLocation = locations[0];
-    [self.locationManager stopUpdatingLocation];
-    [self loadWeatherData];
-    
+    if (!self.currentLocation) {
+        self.currentLocation = locations[0];
+        [self.locationManager stopUpdatingLocation];
+        [self loadWeatherData];
+    }
 }
 
 - (void)locationManager:(CLLocationManager*)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
