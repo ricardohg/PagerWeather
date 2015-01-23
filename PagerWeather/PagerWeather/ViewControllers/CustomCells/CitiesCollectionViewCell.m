@@ -11,17 +11,18 @@
 #import <UIImageView+AFNetworking.h>
 
 @interface CitiesCollectionViewCell ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *cityImageView;
-
 @property (weak, nonatomic) IBOutlet UILabel *countryLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+
 @end
 
 @implementation CitiesCollectionViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    self.countryLabel.textColor = [UIColor blackColor];
+    self.cityLabel.textColor = [UIColor blackColor];
 }
 
 -(void)setCellDataWithCity:(City *)city

@@ -12,7 +12,7 @@
 
 static NSString * const CELL_ID = @"CitiesCollectionViewCell";
 
-@interface CitiesViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface CitiesViewController () <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *citiesCollectionView;
 @property (nonatomic, strong) NSArray * citiesArray;
@@ -44,12 +44,24 @@ static NSString * const CELL_ID = @"CitiesCollectionViewCell";
     return cell;
 }
 
-#pragma mark - UICollectionViewDelegate
+#pragma mark - UICollectionViewLayOutDelegate
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(CGRectGetWidth(collectionView.frame), CGRectGetWidth(collectionView.frame));
+    return CGSizeMake(CGRectGetWidth(collectionView.frame)/2, CGRectGetWidth(collectionView.frame)/2);
 }
+
+#pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     City * city = self.citiesArray[indexPath.row];
