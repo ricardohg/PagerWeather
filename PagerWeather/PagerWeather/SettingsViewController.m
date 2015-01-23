@@ -21,7 +21,8 @@ typedef NS_ENUM(NSInteger, SettingsTableViewTemperatureRow) {
 
 @interface SettingsViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *settingsTableView;
-
+@property (nonatomic, assign) BOOL temperatureCurrentSetting;
+@property (nonatomic, strong) User *currentUser;
 @end
 
 @implementation SettingsViewController
@@ -42,6 +43,8 @@ typedef NS_ENUM(NSInteger, SettingsTableViewTemperatureRow) {
     self.title = NSLocalizedString(@"Settings", nil);
     self.settingsTableView.dataSource = self;
     self.settingsTableView.delegate = self;
+    self.currentUser = [User sharedUser];
+    self.temperatureCurrentSetting = self.currentUser.isFahrenheitSelected;
     //hack to remove extra tableview lines
     self.settingsTableView.tableFooterView = [[UIView alloc] init];
 }
@@ -50,6 +53,11 @@ typedef NS_ENUM(NSInteger, SettingsTableViewTemperatureRow) {
 
 - (void)dismissMe:(id)sel
 {
+    if (self.currentUser.isFahrenheitSelected != self.temperatureCurrentSetting) {
+        if ([self.delegate respondsToSelector:@selector(temperatureSettingDidChange)]) {
+            [self. delegate temperatureSettingDidChange];
+        }
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -87,8 +95,7 @@ typedef NS_ENUM(NSInteger, SettingsTableViewTemperatureRow) {
                         //add a switch
                         UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
                         switchview.tag = indexPath.row;
-                        User *sharedUser = [User sharedUser];
-                        switchview.on = sharedUser.isFahrenheitSelected;
+                        switchview.on = self.currentUser.isFahrenheitSelected;
                         [switchview addTarget:self action:@selector(updateSwitch:) forControlEvents:UIControlEventTouchUpInside];
                         cell.accessoryView = switchview;
                     }
@@ -120,7 +127,7 @@ typedef NS_ENUM(NSInteger, SettingsTableViewTemperatureRow) {
         case SettingsTableViewTemperatureRowFahrenheit: {
          
             BOOL isFahrenheitSelected = aSwitch.isOn;
-            [[User sharedUser] updateTemperatureOption:isFahrenheitSelected];
+            [self.currentUser updateTemperatureOption:isFahrenheitSelected];
         }
             
             break;

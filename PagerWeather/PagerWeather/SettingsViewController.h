@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@protocol SettingsViewControllerDelagete <NSObject>
 
+@optional
+- (void)temperatureSettingDidChange;
+
+@end
+
+@interface SettingsViewController : UIViewController
+@property (nonatomic, weak) id<SettingsViewControllerDelagete>delegate;
 @end

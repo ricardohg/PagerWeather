@@ -24,7 +24,7 @@ static NSDateFormatter *hourDateFormatter;
 static NSDateFormatter *dayDateFormatter;
 static NSNumberFormatter *numberFormatter;
 
-@interface WeatherDetailViewController () <CLLocationManagerDelegate,CitiesViewControllerDelegate,UIViewControllerTransitioningDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface WeatherDetailViewController () <CLLocationManagerDelegate,CitiesViewControllerDelegate,UIViewControllerTransitioningDelegate,UITableViewDelegate,UITableViewDataSource,SettingsViewControllerDelagete>
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) Weather *currentWeather;
@@ -95,7 +95,10 @@ static NSNumberFormatter *numberFormatter;
 - (void)loadWeatherData
 {
     NSString *cityString = @"New York";
-    if (self.currentLocation) {
+    
+    if (self.currentCity) {
+        cityString = self.currentCity.cityString;
+    } else if (self.currentLocation) {
         cityString = nil;
     }
     
@@ -106,8 +109,13 @@ static NSNumberFormatter *numberFormatter;
     
     [Weather getForecastForCityName:cityString orLatitude:latitude longitude:longitude AndNumberOfDays:@(5) withWeatherUnitsFormat:format withCompletionBlock:^(NSArray *weatherArray, NSError *error) {
         if (!error) {
-            self.weatherArray = weatherArray;
-            [self.weatherTableView reloadData];
+            if (weatherArray) {
+                self.weatherArray = weatherArray;
+                [self.weatherTableView reloadData];
+            } else {
+                NSLog(@"no weather!");
+            }
+            
         }
     }];
    
@@ -123,6 +131,7 @@ static NSNumberFormatter *numberFormatter;
 - (void)goToSettings:(id)sel
 {
     SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
+    settingsViewController.delegate = self;
     UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
     settingsNavigationController.modalPresentationStyle = UIModalPresentationCustom;
     settingsNavigationController.transitioningDelegate = self;
@@ -196,6 +205,13 @@ static NSNumberFormatter *numberFormatter;
 - (void)didSelectCity:(City *)city
 {
     self.currentCity = city;
+    [self loadWeatherData];
+}
+
+#pragma mark - SettingsViewControllerDelagete
+
+-(void)temperatureSettingDidChange {
+    [self loadWeatherData];
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate
