@@ -22,4 +22,6 @@
 
 + (NSArray*)getCities;
 
++ (City*)searchForCityWithString:(NSString*)searchString;
+
 @end

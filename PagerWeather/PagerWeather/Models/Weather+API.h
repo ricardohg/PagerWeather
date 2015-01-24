@@ -31,7 +31,6 @@ typedef NS_ENUM(NSInteger, WeatherUnitsFormat)
 
 + (void)getForecastForCityName:(NSString*)cityNameString
                     orLatitude:(NSNumber*)latitude longitude:(NSNumber*)longitude
-               AndNumberOfDays:(NSNumber*)days
         withWeatherUnitsFormat:(WeatherUnitsFormat)format
           withCompletionBlock:(void (^)(NSArray *weatherArray,NSError *error))completionBlock;
 @end

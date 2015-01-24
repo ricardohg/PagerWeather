@@ -37,4 +37,20 @@ static NSString * const JSON_PATH = @"countries";
     return [citiesMutableArray copy];
 }
 
++ (City *)searchForCityWithString:(NSString *)searchString {
+    if (searchString) {
+        NSArray *citiesArray = [self getCities];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"cityString contains[cd] %@", searchString];
+        NSArray *filteredArray = [citiesArray filteredArrayUsingPredicate:predicate];
+        
+        if (filteredArray && filteredArray.count > 0) {
+            return filteredArray[0];
+        } else {
+            return nil;
+        }
+        
+    }
+    return nil;
+}
+
 @end

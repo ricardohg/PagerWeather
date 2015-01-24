@@ -16,10 +16,13 @@
 #import "ForecastTableViewCell.h"
 #import "User.h"
 #import "Temperature.h"
+#import "WeatherHeaderView.h"
 
 static NSString * const FORECASTCELL_ID = @"ForecastTableViewCell";
 static NSString * const HOUR_DATE_FORMATTER_STRING = @"HH:mm";
 static NSString * const DAY_DATE_FORMATTER_STRING = @"EEEE";
+static NSString * const WEATHER_HEADER_VIEW_PATH = @"WeatherHeaderView";
+static NSString * const DEFAULT_CITY_STRING = @"New York";
 static NSDateFormatter *hourDateFormatter;
 static NSDateFormatter *dayDateFormatter;
 static NSNumberFormatter *numberFormatter;
@@ -31,20 +34,31 @@ static NSNumberFormatter *numberFormatter;
 @property (nonatomic, strong) NSArray *weatherArray;
 @property (nonatomic, strong) City *currentCity;
 @property (nonatomic, strong) User *currentUser;
-@property (weak, nonatomic) IBOutlet UITableView *weatherTableView;
+@property (nonatomic, weak) IBOutlet UITableView *weatherTableView;
+@property (nonatomic, strong) WeatherHeaderView * weatherHeaderView;
 @end
 
 @implementation WeatherDetailViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     self.currentUser = [User sharedUser];
+    self.currentWeather = [Weather loadDummyWeather];
+    self.currentCity = [City searchForCityWithString:DEFAULT_CITY_STRING];
     self.weatherTableView.delegate = self;
     self.weatherTableView.dataSource = self;
     [self.weatherTableView registerNib:[UINib nibWithNibName:FORECASTCELL_ID bundle:nil] forCellReuseIdentifier:FORECASTCELL_ID];
+    self.weatherHeaderView = [[[NSBundle mainBundle] loadNibNamed:WEATHER_HEADER_VIEW_PATH owner:self options:nil] objectAtIndex:0];
     [self setUpFormatters];
     [self setUpNavigationBarButtonItems];
     [self startLocationManager];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    self.weatherHeaderView.frame = CGRectMake(0, 0, CGRectGetWidth(self.weatherTableView.frame), CGRectGetWidth(self.weatherTableView.frame));
+    self.weatherTableView.tableHeaderView = self.weatherHeaderView;
 }
 
 #pragma mark - instance methods
@@ -94,7 +108,8 @@ static NSNumberFormatter *numberFormatter;
 
 - (void)loadWeatherData
 {
-    NSString *cityString = @"New York";
+    
+    NSString *cityString = nil;
     
     if (self.currentCity) {
         cityString = self.currentCity.cityString;
@@ -107,11 +122,17 @@ static NSNumberFormatter *numberFormatter;
     
     WeatherUnitsFormat format = self.currentUser.isFahrenheitSelected ? WeatherUnitsFormatImperial : WeatherUnitsFormatMetric;
     
-    [Weather getForecastForCityName:cityString orLatitude:latitude longitude:longitude AndNumberOfDays:@(5) withWeatherUnitsFormat:format withCompletionBlock:^(NSArray *weatherArray, NSError *error) {
+    [Weather getForecastForCityName:cityString orLatitude:latitude longitude:longitude withWeatherUnitsFormat:format withCompletionBlock:^(NSArray *weatherArray, NSError *error) {
         if (!error) {
             if (weatherArray) {
-                self.weatherArray = weatherArray;
                 self.currentWeather = weatherArray[0];
+                if (weatherArray.count > 0) {
+                    NSMutableArray * weatherMutableArray = [weatherArray mutableCopy];
+                    [weatherMutableArray removeObjectAtIndex:0];
+                    self.weatherArray = [weatherArray copy];
+                } else {
+                    self.weatherArray = nil;
+                }
                 [self.weatherTableView reloadData];
             } else {
                 NSLog(@"no weather!");
@@ -178,6 +199,7 @@ static NSNumberFormatter *numberFormatter;
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     if (!self.currentLocation) {
         self.currentLocation = locations[0];
+        self.currentCity = nil;
         [self.locationManager stopUpdatingLocation];
         [self loadWeatherData];
     }

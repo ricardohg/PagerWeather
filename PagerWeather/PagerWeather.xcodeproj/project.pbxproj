@@ -15,6 +15,8 @@
 		8C5365CD1A6DF013002644E8 /* PagerWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5365CC1A6DF013002644E8 /* PagerWeatherTests.m */; };
 		8C5365DA1A6DF077002644E8 /* WeatherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5365D81A6DF077002644E8 /* WeatherDetailViewController.m */; };
 		8C5365DB1A6DF077002644E8 /* WeatherDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5365D91A6DF077002644E8 /* WeatherDetailViewController.xib */; };
+		8C6D3C1E1A743878009CE71A /* WeatherHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D3C1D1A743878009CE71A /* WeatherHeaderView.m */; };
+		8C6D3C201A743897009CE71A /* WeatherHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C6D3C1F1A743897009CE71A /* WeatherHeaderView.xib */; };
 		8C843EF41A709814000828D7 /* AnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C843EF31A709814000828D7 /* AnimationController.m */; };
 		8C843EF71A70ACCB000828D7 /* UIColor+Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C843EF61A70ACCB000828D7 /* UIColor+Weather.m */; };
 		8C977AB51A71E5410047DE6B /* ForecastTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C977AB31A71E5410047DE6B /* ForecastTableViewCell.m */; };
@@ -61,6 +63,9 @@
 		8C5365D71A6DF077002644E8 /* WeatherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherDetailViewController.h; path = ViewControllers/WeatherDetailViewController.h; sourceTree = "<group>"; };
 		8C5365D81A6DF077002644E8 /* WeatherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherDetailViewController.m; path = ViewControllers/WeatherDetailViewController.m; sourceTree = "<group>"; };
 		8C5365D91A6DF077002644E8 /* WeatherDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeatherDetailViewController.xib; path = ViewControllers/WeatherDetailViewController.xib; sourceTree = "<group>"; };
+		8C6D3C1C1A743878009CE71A /* WeatherHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherHeaderView.h; path = ViewControllers/CustomViews/WeatherHeaderView.h; sourceTree = "<group>"; };
+		8C6D3C1D1A743878009CE71A /* WeatherHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherHeaderView.m; path = ViewControllers/CustomViews/WeatherHeaderView.m; sourceTree = "<group>"; };
+		8C6D3C1F1A743897009CE71A /* WeatherHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeatherHeaderView.xib; path = ViewControllers/CustomViews/WeatherHeaderView.xib; sourceTree = "<group>"; };
 		8C843EF21A709814000828D7 /* AnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationController.h; path = CustomClasses/AnimationController.h; sourceTree = "<group>"; };
 		8C843EF31A709814000828D7 /* AnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationController.m; path = CustomClasses/AnimationController.m; sourceTree = "<group>"; };
 		8C843EF51A70ACCB000828D7 /* UIColor+Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Weather.h"; path = "Categories/UIColor+Weather.h"; sourceTree = "<group>"; };
@@ -189,6 +194,7 @@
 		8C5365D61A6DF053002644E8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8C6D3C1B1A743839009CE71A /* CustomViews */,
 				8CDD856F1A6E21AA009AD8D2 /* CustomCells */,
 				8C5365D71A6DF077002644E8 /* WeatherDetailViewController.h */,
 				8C5365D81A6DF077002644E8 /* WeatherDetailViewController.m */,
@@ -201,6 +207,16 @@
 				8CF408221A6E049700DB45E1 /* SettingsViewController.xib */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8C6D3C1B1A743839009CE71A /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				8C6D3C1C1A743878009CE71A /* WeatherHeaderView.h */,
+				8C6D3C1D1A743878009CE71A /* WeatherHeaderView.m */,
+				8C6D3C1F1A743897009CE71A /* WeatherHeaderView.xib */,
+			);
+			name = CustomViews;
 			sourceTree = "<group>";
 		};
 		8C843EF11A7097E4000828D7 /* CustomClasses */ = {
@@ -357,6 +373,7 @@
 				8CF408241A6E049700DB45E1 /* SettingsViewController.xib in Resources */,
 				8C5365BE1A6DF013002644E8 /* Images.xcassets in Resources */,
 				8CF4081A1A6DFDCA00DB45E1 /* countries.json in Resources */,
+				8C6D3C201A743897009CE71A /* WeatherHeaderView.xib in Resources */,
 				8C977AB61A71E5410047DE6B /* ForecastTableViewCell.xib in Resources */,
 				8CDD85741A6E21E6009AD8D2 /* CitiesCollectionViewCell.xib in Resources */,
 				8C5365DB1A6DF077002644E8 /* WeatherDetailViewController.xib in Resources */,
@@ -422,6 +439,7 @@
 				8CF1CF9E1A6F25E500F83D90 /* NSDictionary+Defensive.m in Sources */,
 				8CF408231A6E049700DB45E1 /* SettingsViewController.m in Sources */,
 				8C843EF71A70ACCB000828D7 /* UIColor+Weather.m in Sources */,
+				8C6D3C1E1A743878009CE71A /* WeatherHeaderView.m in Sources */,
 				8C843EF41A709814000828D7 /* AnimationController.m in Sources */,
 				8C977AB51A71E5410047DE6B /* ForecastTableViewCell.m in Sources */,
 				8CDD85731A6E21E6009AD8D2 /* CitiesCollectionViewCell.m in Sources */,

@@ -11,6 +11,17 @@
 #import "NSDictionary+Defensive.h"
 
 @implementation Weather
+
++ (id)loadDummyWeather {
+    
+    Weather * dummyWeather = [[Weather alloc] init];
+    dummyWeather.cityNameString = @"--";
+    dummyWeather.cityNameString = @"--";
+    dummyWeather.weatherDescriptionString = @"--";
+    
+    return dummyWeather;
+}
+
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
