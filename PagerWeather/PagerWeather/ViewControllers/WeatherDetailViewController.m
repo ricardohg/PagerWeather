@@ -241,7 +241,8 @@ typedef NS_ENUM(NSInteger, WeatherTableViewSection) {
 
 #pragma mark - CLLocationManagerDelegate
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
     if (!self.currentLocation) {
         self.currentLocation = locations[0];
         self.currentCity = nil;

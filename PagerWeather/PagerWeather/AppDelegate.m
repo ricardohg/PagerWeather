@@ -35,6 +35,8 @@
     [[UINavigationBar appearance] setTintColor:[UIColor navigationBarTintColor]];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor navigationBarTextColor], NSForegroundColorAttributeName,nil]];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
 }
 
 @end
