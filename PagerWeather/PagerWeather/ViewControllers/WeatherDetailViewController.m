@@ -23,9 +23,14 @@ static NSString * const HOUR_DATE_FORMATTER_STRING = @"HH:mm";
 static NSString * const DAY_DATE_FORMATTER_STRING = @"EEEE";
 static NSString * const WEATHER_HEADER_VIEW_PATH = @"WeatherHeaderView";
 static NSString * const DEFAULT_CITY_STRING = @"New York";
+static NSString * const CITY_PLACEHOLDER_IMAGE_PATH = @"cityplaceholder";
 static NSDateFormatter *hourDateFormatter;
 static NSDateFormatter *dayDateFormatter;
 static NSNumberFormatter *numberFormatter;
+
+typedef NS_ENUM(NSInteger, WeatherTableViewSection) {
+    WeatherTableViewSectionForecast
+};
 
 @interface WeatherDetailViewController () <CLLocationManagerDelegate,CitiesViewControllerDelegate,UIViewControllerTransitioningDelegate,UITableViewDelegate,UITableViewDataSource,SettingsViewControllerDelagete>
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -53,6 +58,7 @@ static NSNumberFormatter *numberFormatter;
     [self setUpFormatters];
     [self setUpNavigationBarButtonItems];
     [self startLocationManager];
+    [self loadWeatherData];
 }
 
 - (void)viewDidLayoutSubviews
@@ -106,6 +112,22 @@ static NSNumberFormatter *numberFormatter;
     }
 }
 
+- (void)setUpHeader
+{
+    Weather *weather = self.currentWeather;
+    NSString *suffixString = [self getTemperatureSuffixString];
+    self.weatherHeaderView.mainTemperatureLabel.text = [NSString stringWithFormat:@"%@ %@",[numberFormatter stringFromNumber:weather.temperature.mainTemparetureNumber],suffixString];
+    NSString *minTempString = [NSString stringWithFormat:@"%@ %@",[numberFormatter stringFromNumber:weather.temperature.minTempratureNumber],suffixString];
+    NSString *maxTempString = [NSString stringWithFormat:@"%@ %@",[numberFormatter stringFromNumber:weather.temperature.maxTemperatureNumber],suffixString];
+    self.weatherHeaderView.minMaxTemperatureLabel.text = [NSString stringWithFormat:@"%@ / %@",minTempString,maxTempString];
+    self.weatherHeaderView.countryCodeLabel.text = weather.countryCodeString;
+    self.weatherHeaderView.cityLabel.text = weather.cityNameString;
+    self.weatherHeaderView.weatherDescriptionLabel.text = weather.weatherDescriptionString;
+    
+    [self.weatherHeaderView setImageWithUrl:self.currentCity.imageUrl andPlaceHolder:[UIImage imageNamed:CITY_PLACEHOLDER_IMAGE_PATH]];
+    
+}
+
 - (void)loadWeatherData
 {
     
@@ -122,10 +144,18 @@ static NSNumberFormatter *numberFormatter;
     
     WeatherUnitsFormat format = self.currentUser.isFahrenheitSelected ? WeatherUnitsFormatImperial : WeatherUnitsFormatMetric;
     
+    [Weather getWeatherForCityName:cityString orLatitude:latitude longitude:longitude withWeatherUnitsFormat:format withCompletionBlock:^(Weather *weather, NSError *error) {
+        if (!error) {
+            self.currentWeather = weather;
+            [self setUpHeader];
+        } else {
+            NSLog(@"no weather!");
+        }
+    }];
+    
     [Weather getForecastForCityName:cityString orLatitude:latitude longitude:longitude withWeatherUnitsFormat:format withCompletionBlock:^(NSArray *weatherArray, NSError *error) {
         if (!error) {
             if (weatherArray) {
-                self.currentWeather = weatherArray[0];
                 if (weatherArray.count > 0) {
                     NSMutableArray * weatherMutableArray = [weatherArray mutableCopy];
                     [weatherMutableArray removeObjectAtIndex:0];
@@ -135,12 +165,12 @@ static NSNumberFormatter *numberFormatter;
                 }
                 [self.weatherTableView reloadData];
             } else {
-                NSLog(@"no weather!");
+                NSLog(@"no forecast!");
             }
             
         }
     }];
-   
+    
 }
 
 - (void)goToCities:(id)sel
@@ -189,9 +219,24 @@ static NSNumberFormatter *numberFormatter;
 
 #pragma mark - UITableViewDelegate
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == WeatherTableViewSectionForecast) {
+        return NSLocalizedString(@"Forecast for next hours", nil);
+    } else {
+        return nil;
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [ForecastTableViewCell heightForCell];
+    if (indexPath.section == WeatherTableViewSectionForecast) {
+            return [ForecastTableViewCell heightForCell];
+    } else {
+        return 0;
+    }
+    
+    return 0;
 }
 
 #pragma mark - CLLocationManagerDelegate

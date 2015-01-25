@@ -10,10 +10,9 @@
 #import "Weather.h"
 #import "UIColor+Weather.h"
 
-static CGFloat HEIGHTFORCELL = 80.0f;
+static CGFloat HEIGHTFORCELL = 72.0f;
 
 @interface ForecastTableViewCell ()
-
 
 @end
 

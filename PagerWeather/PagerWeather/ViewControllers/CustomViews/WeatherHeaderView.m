@@ -8,6 +8,7 @@
 
 #import "WeatherHeaderView.h"
 #import <UIImageView+AFNetworking.h>
+#import "UIColor+Weather.h"
 
 @interface WeatherHeaderView ()
 
@@ -16,6 +17,15 @@
 @end
 
 @implementation WeatherHeaderView
+
+- (void)awakeFromNib {
+    self.weatherDescriptionLabel.clipsToBounds = YES;
+    self.mainTemperatureLabel.textColor = [UIColor headerLabelTextColor];
+    self.minMaxTemperatureLabel.textColor = [UIColor headerLabelTextColor];
+    self.weatherDescriptionLabel.textColor = [UIColor headerLabelTextColor];
+    self.countryCodeLabel.textColor = [UIColor headerLabelTextColor];
+    self.cityLabel.textColor = [UIColor headerLabelTextColor];
+}
 
 - (void)setImageWithUrl:(NSURL *)url andPlaceHolder:(UIImage *)placeholderImage
 {

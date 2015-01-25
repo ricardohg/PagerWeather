@@ -34,9 +34,13 @@
         self.sunriseTimeDate = [NSDate dateWithTimeIntervalSince1970:[[sys numberValueForKeyPath:@"sunrise"] doubleValue]];
         self.sunsetTimeDate = [NSDate dateWithTimeIntervalSince1970:[[sys numberValueForKeyPath:@"sunset"] doubleValue]];
         
-        NSDictionary *weather = [dictionary dictionaryValueForKeyPath:@"weather" defaultValue:nil];
-        self.weatherMainString = [weather valueForKeyPath:@"main" defaultValue:nil];
-        self.weatherDescriptionString = [weather valueForKeyPath:@"description" defaultValue:nil];
+        NSArray *weatherArray = [dictionary arrayValueForKeyPath:@"weather" defaultValue:nil];
+        if (weatherArray) {
+            NSDictionary *weather = weatherArray[0];
+            self.weatherMainString = [weather valueForKeyPath:@"main" defaultValue:nil];
+            self.weatherDescriptionString = [weather valueForKeyPath:@"description" defaultValue:nil];
+        }
+        
         NSDictionary *main = [dictionary dictionaryValueForKeyPath:@"main" defaultValue:nil];
         self.temperature = [[Temperature alloc] initWithDictionary:main];
     }

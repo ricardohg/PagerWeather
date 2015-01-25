@@ -11,6 +11,7 @@
 @interface WeatherHeaderView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel *mainTemperatureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *minMaxTemperatureLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weatherDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countryCodeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;

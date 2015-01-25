@@ -30,4 +30,9 @@
     return [UIColor blackColor];
 }
 
++ (UIColor *)headerLabelTextColor
+{
+    return [UIColor whiteColor];
+}
+
 @end
