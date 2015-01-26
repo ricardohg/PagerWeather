@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>63B6BEAA-D6B1-46CE-8506-E9DE9C7A09BE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PagerWeather</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CA6554B69678D1BD2391F1B08FA36C7AEF1B69E6</key>
+		<string>https://github.com/ricardohg/PagerWeather.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PagerWeather/PagerWeather.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CA6554B69678D1BD2391F1B08FA36C7AEF1B69E6</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ricardohg/PagerWeather.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CA6554B69678D1BD2391F1B08FA36C7AEF1B69E6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CA6554B69678D1BD2391F1B08FA36C7AEF1B69E6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PagerWeather</string>
+		</dict>
+	</array>
+</dict>
+</plist>
