@@ -12,7 +12,6 @@
 		8C5365B61A6DF013002644E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5365B51A6DF013002644E8 /* AppDelegate.m */; };
 		8C5365BE1A6DF013002644E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C5365BD1A6DF013002644E8 /* Images.xcassets */; };
 		8C5365C11A6DF013002644E8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5365BF1A6DF013002644E8 /* LaunchScreen.xib */; };
-		8C5365CD1A6DF013002644E8 /* PagerWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5365CC1A6DF013002644E8 /* PagerWeatherTests.m */; };
 		8C5365DA1A6DF077002644E8 /* WeatherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5365D81A6DF077002644E8 /* WeatherDetailViewController.m */; };
 		8C5365DB1A6DF077002644E8 /* WeatherDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5365D91A6DF077002644E8 /* WeatherDetailViewController.xib */; };
 		8C6D3C1E1A743878009CE71A /* WeatherHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D3C1D1A743878009CE71A /* WeatherHeaderView.m */; };
@@ -35,6 +34,7 @@
 		8CF408271A6E133B00DB45E1 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF408261A6E133B00DB45E1 /* User.m */; };
 		8CF462D41A76236E00D9D28C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF462D21A76236E00D9D28C /* SettingsViewController.m */; };
 		8CF462D51A76236E00D9D28C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CF462D31A76236E00D9D28C /* SettingsViewController.xib */; };
+		DB4BE5E91A76CEC400AB46AB /* testUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4BE5E81A76CEC400AB46AB /* testUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,6 @@
 		8C5365C01A6DF013002644E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8C5365C61A6DF013002644E8 /* PagerWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagerWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C5365CB1A6DF013002644E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8C5365CC1A6DF013002644E8 /* PagerWeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagerWeatherTests.m; sourceTree = "<group>"; };
 		8C5365D71A6DF077002644E8 /* WeatherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherDetailViewController.h; path = ViewControllers/WeatherDetailViewController.h; sourceTree = "<group>"; };
 		8C5365D81A6DF077002644E8 /* WeatherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherDetailViewController.m; path = ViewControllers/WeatherDetailViewController.m; sourceTree = "<group>"; };
 		8C5365D91A6DF077002644E8 /* WeatherDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WeatherDetailViewController.xib; path = ViewControllers/WeatherDetailViewController.xib; sourceTree = "<group>"; };
@@ -97,6 +96,7 @@
 		8CF462D11A76236E00D9D28C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ViewControllers/SettingsViewController.h; sourceTree = "<group>"; };
 		8CF462D21A76236E00D9D28C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ViewControllers/SettingsViewController.m; sourceTree = "<group>"; };
 		8CF462D31A76236E00D9D28C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ViewControllers/SettingsViewController.xib; sourceTree = "<group>"; };
+		DB4BE5E81A76CEC400AB46AB /* testUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testUser.m; sourceTree = "<group>"; };
 		E1A26CE04019BBAE9792F72E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,7 +177,7 @@
 		8C5365C91A6DF013002644E8 /* PagerWeatherTests */ = {
 			isa = PBXGroup;
 			children = (
-				8C5365CC1A6DF013002644E8 /* PagerWeatherTests.m */,
+				DB4BE5E71A76CE9000AB46AB /* Models */,
 				8C5365CA1A6DF013002644E8 /* Supporting Files */,
 			);
 			path = PagerWeatherTests;
@@ -285,6 +285,14 @@
 				7600EA37D3EB2510080A9FCB /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB4BE5E71A76CE9000AB46AB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DB4BE5E81A76CEC400AB46AB /* testUser.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,7 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C5365CD1A6DF013002644E8 /* PagerWeatherTests.m in Sources */,
+				DB4BE5E91A76CEC400AB46AB /* testUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
