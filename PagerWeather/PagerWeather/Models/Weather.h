@@ -22,5 +22,5 @@
 @property (nonatomic, strong) Temperature *temperature;
 
 - (id)initWithDictionary:(NSDictionary*)dictionary;
-+ (id)loadDummyWeather;
+
 @end

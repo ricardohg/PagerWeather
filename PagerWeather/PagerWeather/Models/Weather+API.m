@@ -37,7 +37,7 @@ static NSString * const APPID = @"c3be8a47d90ecd724d6f15cb400b2c49";
     
     [openWeatherMapHTTPOperationManager GET:WEATHER_ENDPOINT parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (completionBlock) {
-            if (responseObject) {
+            if (responseObject && [[responseObject numberValueForKeyPath:@"cod"] isEqualToNumber:@(200)]) {
                 Weather *weather = [[Weather alloc] initWithDictionary:responseObject];
                 completionBlock(weather,nil);
             } else {

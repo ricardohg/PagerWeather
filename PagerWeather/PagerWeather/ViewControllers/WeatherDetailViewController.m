@@ -17,6 +17,7 @@
 #import "User.h"
 #import "Temperature.h"
 #import "WeatherHeaderView.h"
+#import "OpenWeatherMapHTTPOperationManager.h"
 
 static NSString * const FORECASTCELL_ID = @"ForecastTableViewCell";
 static NSString * const HOUR_DATE_FORMATTER_STRING = @"HH:mm";
@@ -49,10 +50,10 @@ typedef NS_ENUM(NSInteger, WeatherTableViewSection) {
 {
     [super viewDidLoad];
     self.currentUser = [User sharedUser];
-    self.currentWeather = [Weather loadDummyWeather];
     self.currentCity = [City searchForCityWithString:DEFAULT_CITY_STRING];
     self.weatherTableView.delegate = self;
     self.weatherTableView.dataSource = self;
+    self.weatherTableView.tableFooterView = [[UIView alloc] init];
     [self.weatherTableView registerNib:[UINib nibWithNibName:FORECASTCELL_ID bundle:nil] forCellReuseIdentifier:FORECASTCELL_ID];
     self.weatherHeaderView = [[[NSBundle mainBundle] loadNibNamed:WEATHER_HEADER_VIEW_PATH owner:self options:nil] objectAtIndex:0];
     [self setUpFormatters];
@@ -142,14 +143,35 @@ typedef NS_ENUM(NSInteger, WeatherTableViewSection) {
     NSNumber *latitude = @(self.currentLocation.coordinate.latitude);
     NSNumber *longitude = @(self.currentLocation.coordinate.longitude);
     
+    
+    
     WeatherUnitsFormat format = self.currentUser.isFahrenheitSelected ? WeatherUnitsFormatImperial : WeatherUnitsFormatMetric;
     
     [Weather getWeatherForCityName:cityString orLatitude:latitude longitude:longitude withWeatherUnitsFormat:format withCompletionBlock:^(Weather *weather, NSError *error) {
         if (!error) {
-            self.currentWeather = weather;
-            [self setUpHeader];
+            if (weather) {
+                self.currentWeather = weather;
+                [self setUpHeader];
+            } else {
+                UIAlertController * alertController = [UIAlertController
+                                                       alertControllerWithTitle:@"Weather"
+                                                       message:NSLocalizedString(@"Sorry, can't find weather for that city",nil)
+                                                       preferredStyle:UIAlertControllerStyleAlert];
+                [self presentViewController:alertController animated:YES completion:nil];
+                
+                UIAlertAction* okAction = [UIAlertAction
+                                     actionWithTitle:NSLocalizedString(@"OK", nil)
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alertController dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+                [alertController addAction:okAction];
+            }
+           
         } else {
-            NSLog(@"no weather!");
+            NSLog(@"%@",error.localizedDescription);
         }
     }];
     
@@ -164,10 +186,9 @@ typedef NS_ENUM(NSInteger, WeatherTableViewSection) {
                     self.weatherArray = nil;
                 }
                 [self.weatherTableView reloadData];
-            } else {
-                NSLog(@"no forecast!");
             }
-            
+        } else {
+            NSLog(@"%@",error.localizedDescription);
         }
     }];
     
@@ -221,7 +242,7 @@ typedef NS_ENUM(NSInteger, WeatherTableViewSection) {
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == WeatherTableViewSectionForecast) {
+    if (section == WeatherTableViewSectionForecast && self.weatherArray.count) {
         return NSLocalizedString(@"Forecast for next hours", nil);
     } else {
         return nil;
@@ -244,6 +265,7 @@ typedef NS_ENUM(NSInteger, WeatherTableViewSection) {
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     if (!self.currentLocation) {
+        [[[OpenWeatherMapHTTPOperationManager sharedManager] operationQueue] cancelAllOperations];
         self.currentLocation = locations[0];
         self.currentCity = nil;
         [self.locationManager stopUpdatingLocation];
