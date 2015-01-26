@@ -19,7 +19,6 @@
 		8C6D3C201A743897009CE71A /* WeatherHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C6D3C1F1A743897009CE71A /* WeatherHeaderView.xib */; };
 		8C843EF41A709814000828D7 /* AnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C843EF31A709814000828D7 /* AnimationController.m */; };
 		8C843EF71A70ACCB000828D7 /* UIColor+Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C843EF61A70ACCB000828D7 /* UIColor+Weather.m */; };
-		8C851D911A75CBE8008A3CB9 /* travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 8C851D901A75CBE8008A3CB9 /* travis.yml */; };
 		8C977AB51A71E5410047DE6B /* ForecastTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C977AB31A71E5410047DE6B /* ForecastTableViewCell.m */; };
 		8C977AB61A71E5410047DE6B /* ForecastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C977AB41A71E5410047DE6B /* ForecastTableViewCell.xib */; };
 		8CDD85731A6E21E6009AD8D2 /* CitiesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDD85711A6E21E6009AD8D2 /* CitiesCollectionViewCell.m */; };
@@ -71,7 +70,6 @@
 		8C843EF31A709814000828D7 /* AnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationController.m; path = CustomClasses/AnimationController.m; sourceTree = "<group>"; };
 		8C843EF51A70ACCB000828D7 /* UIColor+Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Weather.h"; path = "Categories/UIColor+Weather.h"; sourceTree = "<group>"; };
 		8C843EF61A70ACCB000828D7 /* UIColor+Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Weather.m"; path = "Categories/UIColor+Weather.m"; sourceTree = "<group>"; };
-		8C851D901A75CBE8008A3CB9 /* travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = travis.yml; sourceTree = SOURCE_ROOT; };
 		8C977AB21A71E5410047DE6B /* ForecastTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForecastTableViewCell.h; path = ViewControllers/CustomCells/ForecastTableViewCell.h; sourceTree = "<group>"; };
 		8C977AB31A71E5410047DE6B /* ForecastTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForecastTableViewCell.m; path = ViewControllers/CustomCells/ForecastTableViewCell.m; sourceTree = "<group>"; };
 		8C977AB41A71E5410047DE6B /* ForecastTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForecastTableViewCell.xib; path = ViewControllers/CustomCells/ForecastTableViewCell.xib; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 		8C5365B01A6DF013002644E8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8C851D901A75CBE8008A3CB9 /* travis.yml */,
 				8C5365B11A6DF013002644E8 /* Info.plist */,
 				8C5365B21A6DF013002644E8 /* main.m */,
 				8CF408191A6DFDCA00DB45E1 /* countries.json */,
@@ -379,7 +376,6 @@
 				8C6D3C201A743897009CE71A /* WeatherHeaderView.xib in Resources */,
 				8C977AB61A71E5410047DE6B /* ForecastTableViewCell.xib in Resources */,
 				8CDD85741A6E21E6009AD8D2 /* CitiesCollectionViewCell.xib in Resources */,
-				8C851D911A75CBE8008A3CB9 /* travis.yml in Resources */,
 				8C5365DB1A6DF077002644E8 /* WeatherDetailViewController.xib in Resources */,
 				8CF4081F1A6E047300DB45E1 /* CitiesViewController.xib in Resources */,
 			);
