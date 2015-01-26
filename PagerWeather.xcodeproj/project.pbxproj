@@ -35,6 +35,7 @@
 		8CF462D41A76236E00D9D28C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF462D21A76236E00D9D28C /* SettingsViewController.m */; };
 		8CF462D51A76236E00D9D28C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CF462D31A76236E00D9D28C /* SettingsViewController.xib */; };
 		DB4BE5E91A76CEC400AB46AB /* testUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4BE5E81A76CEC400AB46AB /* testUser.m */; };
+		DBF8249B1A76DF1B0083F9B8 /* testCity.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF8249A1A76DF1B0083F9B8 /* testCity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		8CF462D21A76236E00D9D28C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ViewControllers/SettingsViewController.m; sourceTree = "<group>"; };
 		8CF462D31A76236E00D9D28C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ViewControllers/SettingsViewController.xib; sourceTree = "<group>"; };
 		DB4BE5E81A76CEC400AB46AB /* testUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testUser.m; sourceTree = "<group>"; };
+		DBF8249A1A76DF1B0083F9B8 /* testCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testCity.m; sourceTree = "<group>"; };
 		E1A26CE04019BBAE9792F72E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -291,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				DB4BE5E81A76CEC400AB46AB /* testUser.m */,
+				DBF8249A1A76DF1B0083F9B8 /* testCity.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBF8249B1A76DF1B0083F9B8 /* testCity.m in Sources */,
 				DB4BE5E91A76CEC400AB46AB /* testUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
