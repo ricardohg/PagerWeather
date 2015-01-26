@@ -1,4 +1,4 @@
 # PagerWeather
-pager test
-clone the repo
-pod install
+pager test  
+clone the repo  
+pod install  
