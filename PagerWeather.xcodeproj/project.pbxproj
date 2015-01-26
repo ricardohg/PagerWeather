@@ -36,6 +36,8 @@
 		8CF462D51A76236E00D9D28C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CF462D31A76236E00D9D28C /* SettingsViewController.xib */; };
 		DB4BE5E91A76CEC400AB46AB /* testUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4BE5E81A76CEC400AB46AB /* testUser.m */; };
 		DBF8249B1A76DF1B0083F9B8 /* testCity.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF8249A1A76DF1B0083F9B8 /* testCity.m */; };
+		DBF824A01A76FBE70083F9B8 /* testWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF8249F1A76FBE70083F9B8 /* testWeather.m */; };
+		DBF824A21A76FD0B0083F9B8 /* testTemperature.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF824A11A76FD0B0083F9B8 /* testTemperature.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		8CF462D31A76236E00D9D28C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ViewControllers/SettingsViewController.xib; sourceTree = "<group>"; };
 		DB4BE5E81A76CEC400AB46AB /* testUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testUser.m; sourceTree = "<group>"; };
 		DBF8249A1A76DF1B0083F9B8 /* testCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testCity.m; sourceTree = "<group>"; };
+		DBF8249F1A76FBE70083F9B8 /* testWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testWeather.m; sourceTree = "<group>"; };
+		DBF824A11A76FD0B0083F9B8 /* testTemperature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testTemperature.m; sourceTree = "<group>"; };
 		E1A26CE04019BBAE9792F72E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +298,8 @@
 			children = (
 				DB4BE5E81A76CEC400AB46AB /* testUser.m */,
 				DBF8249A1A76DF1B0083F9B8 /* testCity.m */,
+				DBF8249F1A76FBE70083F9B8 /* testWeather.m */,
+				DBF824A11A76FD0B0083F9B8 /* testTemperature.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -463,7 +469,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBF824A01A76FBE70083F9B8 /* testWeather.m in Sources */,
 				DBF8249B1A76DF1B0083F9B8 /* testCity.m in Sources */,
+				DBF824A21A76FD0B0083F9B8 /* testTemperature.m in Sources */,
 				DB4BE5E91A76CEC400AB46AB /* testUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
