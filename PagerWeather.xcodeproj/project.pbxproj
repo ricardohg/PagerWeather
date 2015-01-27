@@ -40,6 +40,7 @@
 		DBF824A01A76FBE70083F9B8 /* WeatherTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF8249F1A76FBE70083F9B8 /* WeatherTest.m */; };
 		DBF824A21A76FD0B0083F9B8 /* TemperatureTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF824A11A76FD0B0083F9B8 /* TemperatureTest.m */; };
 		DBF824A51A77111B0083F9B8 /* WeatherDetailViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF824A41A77111B0083F9B8 /* WeatherDetailViewControllerTest.m */; };
+		DBF824A81A772CE10083F9B8 /* CitiesViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF824A71A772CE10083F9B8 /* CitiesViewControllerTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		DBF8249F1A76FBE70083F9B8 /* WeatherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherTest.m; sourceTree = "<group>"; };
 		DBF824A11A76FD0B0083F9B8 /* TemperatureTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureTest.m; sourceTree = "<group>"; };
 		DBF824A41A77111B0083F9B8 /* WeatherDetailViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherDetailViewControllerTest.m; sourceTree = "<group>"; };
+		DBF824A71A772CE10083F9B8 /* CitiesViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitiesViewControllerTest.m; sourceTree = "<group>"; };
 		E1A26CE04019BBAE9792F72E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -319,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				DBF824A41A77111B0083F9B8 /* WeatherDetailViewControllerTest.m */,
+				DBF824A71A772CE10083F9B8 /* CitiesViewControllerTest.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				DBF8249B1A76DF1B0083F9B8 /* CityTest.m in Sources */,
 				DBF824A21A76FD0B0083F9B8 /* TemperatureTest.m in Sources */,
 				DB4BE5E91A76CEC400AB46AB /* UserTest.m in Sources */,
+				DBF824A81A772CE10083F9B8 /* CitiesViewControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
