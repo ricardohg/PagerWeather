@@ -10,13 +10,13 @@
 #import <XCTest/XCTest.h>
 #import "User.h"
 
-@interface testUser : XCTestCase
+@interface UserTest : XCTestCase
 
 @property (nonatomic, strong) User *testUser;
 
 @end
 
-@implementation testUser
+@implementation UserTest
 
 - (void)setUp {
     [super setUp];

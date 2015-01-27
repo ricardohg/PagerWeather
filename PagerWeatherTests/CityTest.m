@@ -10,11 +10,11 @@
 #import <XCTest/XCTest.h>
 #import "City.h"
 
-@interface testCity : XCTestCase
+@interface CityTest : XCTestCase
 @property (nonatomic, strong) City *testCity;
 @end
 
-@implementation testCity
+@implementation CityTest
 
 - (void)setUp {
     [super setUp];

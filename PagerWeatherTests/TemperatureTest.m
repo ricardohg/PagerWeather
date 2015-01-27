@@ -10,11 +10,11 @@
 #import <XCTest/XCTest.h>
 #import "Temperature.h"
 
-@interface testTemperature : XCTestCase
+@interface TemperatureTest : XCTestCase
 @property (nonatomic, strong) Temperature *testTemperature;
 @end
 
-@implementation testTemperature
+@implementation TemperatureTest
 
 - (void)setUp {
     [super setUp];
