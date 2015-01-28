@@ -72,7 +72,7 @@
 - (void)testGoToCities {
     id mockViewController = [OCMockObject partialMockForObject:self.testWeatherDetailViewController];
     OCMExpect([[mockViewController navigationController] pushViewController:OCMOCK_ANY animated:YES]);
-    [self.testWeatherDetailViewController goToSettings:nil];
+    [self.testWeatherDetailViewController goToCities:nil];
     
     [mockViewController verify];
     
