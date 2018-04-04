@@ -8,7 +8,7 @@
 
 #import "OpenWeatherMapHTTPOperationManager.h"
 
-static NSString * const BASE_URL = @"http://api.openweathermap.org/data/2.5/";
+static NSString * const BASE_URL = @"https://api.openweathermap.org/data/2.5/";
 
 @implementation OpenWeatherMapHTTPOperationManager
 

@@ -37,7 +37,7 @@
     XCTAssertTrue([array isKindOfClass:[NSArray class]]);
 }
 
-- (void) testSearchForCityWithString
+- (void)testSearchForCityWithString
 {
     NSString *searchString = @"Paris";
     City *resultCity= [City searchForCityWithString:searchString];

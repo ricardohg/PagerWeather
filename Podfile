@@ -2,6 +2,10 @@ platform :ios, '8.1'
 
 pod 'AFNetworking'
 
-target 'PagerWeatherTests', :exclusive => true do
+target 'PagerWeather' do
+    pod 'AFNetworking'
+end
+
+target 'PagerWeatherTests' do
 pod 'OCMock' 
 end

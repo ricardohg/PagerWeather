@@ -143,8 +143,6 @@ typedef NS_ENUM(NSInteger, WeatherTableViewSection) {
     NSNumber *latitude = @(self.currentLocation.coordinate.latitude);
     NSNumber *longitude = @(self.currentLocation.coordinate.longitude);
     
-    
-    
     WeatherUnitsFormat format = self.currentUser.isFahrenheitSelected ? WeatherUnitsFormatImperial : WeatherUnitsFormatMetric;
     
     [Weather getWeatherForCityName:cityString orLatitude:latitude longitude:longitude withWeatherUnitsFormat:format withCompletionBlock:^(Weather *weather, NSError *error) {
